@@ -519,10 +519,8 @@ async function startTranscription() {
     setStep(1, 'done');
 
     setStep(2, 'active');
-    // Extract audio only using Web Audio API - much smaller upload
-    const audioBlob = await extractAudio(fileBlob);
     const formData = new FormData();
-    formData.append('audio', audioBlob, 'audio.wav');
+    formData.append('audio', fileBlob, 'video.mp4');
     const uploadRes = await fetch('https://api.gladia.io/v2/upload', {
       method: 'POST',
       headers: { 'x-gladia-key': apiKey },
